@@ -1,18 +1,17 @@
 import { Link } from 'react-router-dom';
 
 function CurrenciesList() {
-  const currency = ['USD', 'GBP', 'EUR', 'JPY', 'CHF', 'CAD', 'AUD', 'ZAR'];
+  const currencies = ['USD', 'GBP', 'EUR', 'JPY', 'CHF', 'CAD', 'AUD', 'ZAR'];
 
   return (
     <div>
       <h1>this is currencies list</h1>
       <ul>
-        <li key={currency[0]}>
-          <Link to={`/currency/${currency[0]}`}>currency one</Link>
-        </li>
-        <li key={currency[1]}>
-          <Link to={`/currency/${currency[1]}`}>currency two</Link>
-        </li>
+        {currencies.map((currency) => (
+          <li key={currency}>
+            <Link to={`/currency/${currency}`}>{`currency ${currency}`}</Link>
+          </li>
+        ))}
       </ul>
     </div>
   );

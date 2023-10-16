@@ -8,7 +8,7 @@ function Header() {
         <img src="/" alt="back button" />
         <h3>2005</h3>
       </NavLink>
-      <h1>Currency</h1>
+      <h3>Currency</h3>
     </header>
   );
 }
