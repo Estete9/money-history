@@ -13,7 +13,6 @@ const initialState = {
 export const fetchSymbolsAPI = createAsyncThunk('currencies/symbols', async (_, { rejectWithValue }) => {
   try {
     const currencySymbols = await axios.get(`${baseUrl}symbols?access_key=${apiKey}`);
-    console.log('currencySymbols.data', currencySymbols.data);
     return currencySymbols.data;
   } catch (error) {
     return rejectWithValue(error.response);
@@ -30,12 +29,14 @@ const currenciesSlice = createSlice({
         store.isLoading = true;
       })
       .addCase(fetchSymbolsAPI.fulfilled, (store, action) => {
-        console.log('currenciesData', action.payload);
-        store.currenciesData = action.payload;
+        const currenciesArray = Object.keys(action.payload.symbols).map((key) => ({
+          currencySymbol: key,
+          currencyCountry: action.payload.symbols[key],
+        }));
+        store.currenciesData = currenciesArray;
         store.isLoading = false;
       })
-      .addCase(fetchSymbolsAPI.pending, (store, action) => {
-        console.log('error=action.payload', action.payload);
+      .addCase(fetchSymbolsAPI.rejected, (store, action) => {
         store.error = action.payload;
       });
   },
