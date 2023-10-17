@@ -30,4 +30,3 @@ CurrencyElement.defaultProps = {
 };
 
 export default CurrencyElement;
-

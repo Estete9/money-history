@@ -8,7 +8,7 @@ function CurrenciesList() {
 
   return (
     <div>
-      <SectionHeader name="EUR Euro" value="1.594" />
+      <SectionHeader name="Euro" value="$1.594" />
       <div className={styles.currenciesGrid}>
         {currencies.map((currency) => (
           <Link key={currency} to={`/currency/${currency}`}>

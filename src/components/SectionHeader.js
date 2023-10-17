@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import styles from '../styles/sectionHeader.module.css';
 
 function SectionHeader({ name, value }) {
   return (
-    <section>
-      <img src="/" alt="section header" />
+    <section className={styles.sectionHeader}>
+      <img src="/" alt="currency icon" />
       <div>
         <p>{name}</p>
         <p>{value}</p>
