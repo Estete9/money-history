@@ -41,7 +41,7 @@ function CurrenciesList() {
       <SectionHeader name="Euro" value="$1.594" />
       <div className={styles.currenciesGrid}>
         {currenciesData.map((currency) => (
-          <Link key={uuidv4()} to={`/currency/${currency}`}>
+          <Link key={uuidv4()} to={`/currency/${currency.currencySymbol}`}>
             <CurrencyElement currency={currency} />
           </Link>
         ))}
