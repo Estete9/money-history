@@ -4,10 +4,10 @@ import styles from '../styles/currencyElement.module.css';
 function CurrencyElement({ currency }) {
   return (
     <div className={styles.td}>
-      <img src="/" alt="currencyImg.name" />
+      <img src="/" alt="currencyImg" />
       <div className={styles.currencyContent}>
-        <p>{`currency name (needs to change later) ${currency}`}</p>
-        <p>{`currency symbol ${currency}`}</p>
+        <p>{currency.currencyCountry}</p>
+        <p>{currency.currencySymbol}</p>
       </div>
     </div>
   );
@@ -15,17 +15,15 @@ function CurrencyElement({ currency }) {
 
 CurrencyElement.propTypes = {
   currency: PropTypes.shape({
-    icon: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    symbol: PropTypes.string.isRequired,
+    currencyCountry: PropTypes.string.isRequired,
+    currencySymbol: PropTypes.string.isRequired,
   }),
 };
 
 CurrencyElement.defaultProps = {
   currency: {
-    icon: '',
-    name: '',
-    symbol: '',
+    currencyCountry: '',
+    currencySymbol: '',
   },
 };
 
