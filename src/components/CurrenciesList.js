@@ -1,18 +1,21 @@
 import { Link } from 'react-router-dom';
+import SectionHeader from './SectionHeader';
+import CurrencyElement from './CurrencyElement';
+import styles from '../styles/currenciesList.module.css';
 
 function CurrenciesList() {
   const currencies = ['USD', 'GBP', 'EUR', 'JPY', 'CHF', 'CAD', 'AUD', 'ZAR'];
 
   return (
     <div>
-      <h1>this is currencies list</h1>
-      <ul>
+      <SectionHeader name="EUR Euro" value="1.594" />
+      <div className={styles.currenciesGrid}>
         {currencies.map((currency) => (
-          <li key={currency}>
-            <Link to={`/currency/${currency}`}>{`currency ${currency}`}</Link>
-          </li>
+          <Link key={currency} to={`/currency/${currency}`}>
+            <CurrencyElement currency={currency} />
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
