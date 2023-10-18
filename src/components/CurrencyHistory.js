@@ -8,15 +8,17 @@ import CurrencyHistoryElement from './CurrencyHistoryElement';
 
 function CurrencyHistory() {
   const { symbol } = useParams();
+  // prettier-ignore
   const {
-    currencyHistory, currenciesData, isLoadingHistory, error,
+    currencyHistory,
+    currenciesData,
+    isLoadingHistory,
+    error,
   } = useSelector(
     (store) => store.currencies,
   );
   const [currentDate] = useState(new Date());
-
   const dispatch = useDispatch();
-
   const getCountryName = (currenciesData, symbol) => {
     const currency = currenciesData.find((currency) => currency.currencySymbol === symbol);
     return currency ? currency.currencyCountry : 'Country not found';

@@ -42,7 +42,8 @@ export const fetchCurrencyHistory = createAsyncThunk(
     const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so we add 1 and pad with '0' if necessary.
     const day = String(currentDate.getDate()).padStart(2, '0');
     const past5Years = makeLast5Years(thisYear);
-    const responses5Years = await Promise.all(
+    // prettier-ignore
+    return Promise.all(
       past5Years.map(async (year) => {
         try {
           const currencyTimeline = await axios.get(
@@ -54,7 +55,6 @@ export const fetchCurrencyHistory = createAsyncThunk(
         }
       }),
     );
-    return responses5Years;
   },
 );
 
@@ -72,6 +72,7 @@ const currenciesSlice = createSlice({
           currencySymbol: key,
           currencyCountry: action.payload.symbols[key],
         }));
+        // prettier-ignore
         const top8Currencies = currenciesArray.filter((currency) => (
           topCurrencyArray.includes(currency.currencySymbol)
         ));
@@ -86,7 +87,6 @@ const currenciesSlice = createSlice({
         store.isLoadingHistory = true;
       })
       .addCase(fetchCurrencyHistory.fulfilled, (store, action) => {
-        console.log('in fetchCurrencyHistory.fulfilled: action.payload', action.payload);
         store.currencyHistory = action.payload;
         store.isLoadingHistory = false;
       })

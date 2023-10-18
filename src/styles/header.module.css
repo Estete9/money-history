@@ -1,3 +1,25 @@
 .header {
   display: flex;
+  position: relative;
+  text-align: center;
+}
+
+.backSection {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.searchIcon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.searchIcon,
+.backBtn {
+  height: 20px;
 }
