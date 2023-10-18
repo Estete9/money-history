@@ -18,4 +18,8 @@ SectionHeader.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
+SectionHeader.defaultProp = {
+  countryName: 'EUR',
+  value: '-2',
+};
 export default SectionHeader;
