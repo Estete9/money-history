@@ -9,14 +9,14 @@ import { fetchSymbolsAPI } from '../redux/currencies/currenciesSlice';
 
 function CurrenciesList() {
   const dispatch = useDispatch();
-  const { currenciesData, isLoading, error } = useSelector((store) => store.currencies);
+  const { currenciesData, isLoadingData, error } = useSelector((store) => store.currencies);
   useEffect(() => {
-    if (isLoading && !currenciesData.length) {
+    if (isLoadingData && !currenciesData.length) {
       dispatch(fetchSymbolsAPI());
     }
-  }, [currenciesData.length, dispatch, isLoading]);
+  }, [currenciesData.length, dispatch, isLoadingData]);
 
-  if (isLoading) {
+  if (isLoadingData) {
     return <div>Currencies loading...</div>;
   }
 

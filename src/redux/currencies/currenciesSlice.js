@@ -8,33 +8,53 @@ const topCurrencyArray = ['USD', 'GBP', 'EUR', 'JPY', 'CHF', 'CAD', 'AUD', 'ZAR'
 const initialState = {
   currenciesData: [],
   currencyHistory: [],
-  isLoading: true,
+  isLoadingData: true,
+  isLoadingHistory: true,
   error: null,
 };
 
-export const fetchSymbolsAPI = createAsyncThunk('currencies/symbols', async (_, { rejectWithValue }) => {
-  try {
-    const currencySymbols = await axios.get(`${baseUrl}symbols?access_key=${apiKey}`);
-    // const top8 = currencySymbols.data.slice(0, 8);
-    return currencySymbols.data;
-  } catch (error) {
-    return rejectWithValue(error.response);
+const makeLast5Years = (year) => {
+  let thisYear = year;
+  const last5Years = [];
+  for (let i = 0; i < 5; i += 1) {
+    last5Years.push(thisYear);
+    thisYear -= 1;
   }
-});
+  return last5Years;
+};
 
-export const fetchCurrencyHistory = createAsyncThunk(
-  'currencies/currency-history',
-  async ({ symbol, currentDate, year }, { rejectWithValue }) => {
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so we add 1 and pad with '0' if necessary.
-    const day = String(currentDate.getDate()).padStart(2, '0');
+export const fetchSymbolsAPI = createAsyncThunk(
+  'currencies/symbols',
+  async (_, { rejectWithValue }) => {
     try {
-      const currencyTimeline = await axios.get(
-        `${baseUrl}${year}-${month}-${day}?access_key=${apiKey}&symbols=${symbol}`,
-      );
-      return currencyTimeline.data;
+      const currencySymbols = await axios.get(`${baseUrl}symbols?access_key=${apiKey}`);
+      return currencySymbols.data;
     } catch (error) {
       return rejectWithValue(error.response);
     }
+  },
+);
+
+export const fetchCurrencyHistory = createAsyncThunk(
+  'currencies/currency-history',
+  async ({ symbol, currentDate }, { rejectWithValue }) => {
+    const thisYear = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so we add 1 and pad with '0' if necessary.
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const past5Years = makeLast5Years(thisYear);
+    const responses5Years = await Promise.all(
+      past5Years.map(async (year) => {
+        try {
+          const currencyTimeline = await axios.get(
+            `${baseUrl}${year}-${month}-${day}?access_key=${apiKey}&&symbols=${symbol}`,
+          );
+          return currencyTimeline.data;
+        } catch (error) {
+          return rejectWithValue(error.response);
+        }
+      }),
+    );
+    return responses5Years;
   },
 );
 
@@ -45,33 +65,34 @@ const currenciesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchSymbolsAPI.pending, (store) => {
-        store.isLoading = true;
+        store.isLoadingData = true;
       })
       .addCase(fetchSymbolsAPI.fulfilled, (store, action) => {
         const currenciesArray = Object.keys(action.payload.symbols).map((key) => ({
           currencySymbol: key,
           currencyCountry: action.payload.symbols[key],
         }));
-        console.log('currenciesArray', currenciesArray);
         const top8Currencies = currenciesArray.filter((currency) => (
           topCurrencyArray.includes(currency.currencySymbol)
         ));
         store.currenciesData = top8Currencies;
-        store.isLoading = false;
+        store.isLoadingData = false;
       })
       .addCase(fetchSymbolsAPI.rejected, (store, action) => {
         store.error = action.error;
+        store.isLoadingData = false;
       })
       .addCase(fetchCurrencyHistory.pending, (store) => {
-        store.isLoading = true;
+        store.isLoadingHistory = true;
       })
       .addCase(fetchCurrencyHistory.fulfilled, (store, action) => {
+        console.log('in fetchCurrencyHistory.fulfilled: action.payload', action.payload);
         store.currencyHistory = action.payload;
-        store.isLoading = false;
+        store.isLoadingHistory = false;
       })
       .addCase(fetchCurrencyHistory.rejected, (store, action) => {
         store.error = action.error;
-        store.isLoading = false;
+        store.isLoadingHistory = false;
       });
   },
 });

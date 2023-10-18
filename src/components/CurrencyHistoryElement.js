@@ -1,28 +1,24 @@
 import PropTypes from 'prop-types';
-import SectionHeader from './SectionHeader';
 
 function CurrencyHistoryElement({ currency }) {
   return (
     <>
-      <SectionHeader name={currency.currencyCountry} value={currency.currencySymbol} />
-      <div>{currency.currencyCountry}</div>
-      <div>{currency.value}</div>
+      <div>{currency.year}</div>
+      <div>{`${currency.currencySymbol} ${currency.value} = EUR 1`}</div>
     </>
   );
 }
 
 CurrencyHistoryElement.propTypes = {
   currency: PropTypes.shape({
-    currencyCountry: PropTypes.string.isRequired,
     currencySymbol: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
+    year: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
   }),
 };
 
 CurrencyHistoryElement.defaultProps = {
   currency: {
-    currencyCountry: '',
     currencySymbol: '',
     year: 0,
     value: 0,

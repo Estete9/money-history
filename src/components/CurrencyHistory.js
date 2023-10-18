@@ -8,55 +8,59 @@ import CurrencyHistoryElement from './CurrencyHistoryElement';
 
 function CurrencyHistory() {
   const { symbol } = useParams();
+  const {
+    currencyHistory, currenciesData, isLoadingHistory, error,
+  } = useSelector(
+    (store) => store.currencies,
+  );
+  const [currentDate] = useState(new Date());
+
   const dispatch = useDispatch();
-  const [past5Years, setPast5Years] = useState([]);
-  const { currenciesData, currencyHistory } = useSelector((store) => store.currencies);
-
-  // console.log('currenciesData', currenciesData);
-  console.log('currencyHistory', currencyHistory);
-  // console.log('currencyHistory.rates[symbol]', currencyHistory.rates[`${symbol}`]);
-
-  useEffect(() => {
-    const currentDate = new Date();
-    let currentYear = currentDate.getFullYear();
-    const pastYears = [];
-
-    for (let i = 0; i < 5; i += 1) {
-      pastYears.push(currentYear - 1);
-      currentYear -= 1;
-    }
-
-    setPast5Years(pastYears); // Set past5Years first
-
-    // Now make API calls based on past5Years
-    pastYears.forEach((year) => {
-      dispatch(fetchCurrencyHistory({ symbol, currentDate, year }));
-    });
-  }, [dispatch, symbol]);
 
   const getCountryName = (currenciesData, symbol) => {
     const currency = currenciesData.find((currency) => currency.currencySymbol === symbol);
     return currency ? currency.currencyCountry : 'Country not found';
   };
 
-  const getValueVSEuro = (currencyHistory, symbol) => {
-    const value = JSON.stringify(currencyHistory.rates[symbol]);
-    console.log('currencyHistory.rates[symbol]', value);
-  };
+  useEffect(() => {
+    if (isLoadingHistory && !currencyHistory.length) {
+      dispatch(fetchCurrencyHistory({ symbol, currentDate }));
+    }
+  }, [currencyHistory, currenciesData, dispatch, isLoadingHistory, symbol, currentDate]);
 
-  // getValueVSEuro(currencyHistory, 'AUD');
+  if (isLoadingHistory) {
+    return <div>Currency&apos;s History loading...</div>;
+  }
+
+  if (error) {
+    return <div>{`We encountered an error: ${JSON.stringify(error)}`}</div>;
+  }
+
+  if (!currencyHistory) {
+    return (
+      <section>
+        <header>
+          <h2>There are no rockets for the moment</h2>
+          <h4>Our rocket list is empty</h4>
+        </header>
+      </section>
+    );
+  }
+
   return (
     <div>
-      <SectionHeader name={symbol} value="1.594" />
-      {past5Years.map((year) => (
+      <SectionHeader
+        countryName={getCountryName(currenciesData, symbol)}
+        symbol={symbol}
+        value="1.594"
+      />
+      {currencyHistory.map((yearObj, index) => (
         <CurrencyHistoryElement
           key={uuidv4()}
           currency={{
-            currencyCountry: getCountryName(currenciesData, symbol),
             currencySymbol: symbol,
-            year,
-            // value: currencyHistory.rates[`${symbol}`],
-            value: 0,
+            year: yearObj.date.split('-')[0],
+            value: currencyHistory ? JSON.stringify(currencyHistory[index].rates[`${symbol}`]) : -2,
           }}
         />
       ))}
