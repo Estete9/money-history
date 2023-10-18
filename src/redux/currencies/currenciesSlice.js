@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const baseUrl = 'http://data.fixer.io/api/';
 const apiKey = '87ab7f42d6987a295d7b9f3fb18be28a';
+const topCurrencyArray = ['USD', 'GBP', 'EUR', 'JPY', 'CHF', 'CAD', 'AUD', 'ZAR'];
 
 const initialState = {
   currenciesData: [],
@@ -14,6 +15,7 @@ const initialState = {
 export const fetchSymbolsAPI = createAsyncThunk('currencies/symbols', async (_, { rejectWithValue }) => {
   try {
     const currencySymbols = await axios.get(`${baseUrl}symbols?access_key=${apiKey}`);
+    // const top8 = currencySymbols.data.slice(0, 8);
     return currencySymbols.data;
   } catch (error) {
     return rejectWithValue(error.response);
@@ -29,7 +31,6 @@ export const fetchCurrencyHistory = createAsyncThunk(
       const currencyTimeline = await axios.get(
         `${baseUrl}${year}-${month}-${day}?access_key=${apiKey}&symbols=${symbol}`,
       );
-      console.log('currencyTimeline.data', currencyTimeline.data);
       return currencyTimeline.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -51,7 +52,11 @@ const currenciesSlice = createSlice({
           currencySymbol: key,
           currencyCountry: action.payload.symbols[key],
         }));
-        store.currenciesData = currenciesArray;
+        console.log('currenciesArray', currenciesArray);
+        const top8Currencies = currenciesArray.filter((currency) => (
+          topCurrencyArray.includes(currency.currencySymbol)
+        ));
+        store.currenciesData = top8Currencies;
         store.isLoading = false;
       })
       .addCase(fetchSymbolsAPI.rejected, (store, action) => {
