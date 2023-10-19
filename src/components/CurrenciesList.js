@@ -33,7 +33,10 @@ function CurrenciesList() {
         .includes(searchQuery.toLowerCase()));
       setFilteredCurrencies(filteredData);
     }
-  }, [currenciesData, searchQuery]);
+    if (!searchQuery) {
+      setFilteredCurrencies(currenciesData);
+    }
+  }, [currenciesData, dispatch, searchQuery]);
 
   if (isLoadingData) {
     return <div>Currencies loading...</div>;
