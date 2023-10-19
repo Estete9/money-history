@@ -1,7 +1,10 @@
 .header {
   display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   text-align: center;
+  height: 45px;
 }
 
 .backSection {
@@ -13,10 +16,18 @@
 }
 
 .searchBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2px;
+  padding: 5px;
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  border: none;
+  border-radius: 30px;
+  background-color: aqua;
 }
 
 .searchIconImg,
@@ -25,5 +36,9 @@
 }
 
 .show {
+  display: flex;
+}
+
+.searchBar {
   display: flex;
 }

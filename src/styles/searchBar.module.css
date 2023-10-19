@@ -1,8 +1,6 @@
 .searchBarWrapper {
-  /* display: none; */
-  width: 100%;
-  position: absolute;
-  height: 30px;
+  flex: 1;
+  height: 100%;
 }
 
 .searchBar {
@@ -19,10 +17,18 @@
 }
 
 .closeBtn {
+  margin-right: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  border: none;
+  border-radius: 30px;
+  background-color: aqua;
 }
 
 .show {
