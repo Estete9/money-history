@@ -9,15 +9,12 @@ function SearchBar() {
 
   const handleCloseBtn = () => {
     dispatch(toggleSearchBar());
+    dispatch(updateSearchQuery());
   };
 
   const handleSearchQuery = (event) => {
     dispatch(updateSearchQuery(event.target.value));
   };
-
-  // useEffect((queryValue) => {
-  //   dispatch(updateSearchQuery(queryValue));
-  // });
 
   return (
     isSearchBarOpen && (

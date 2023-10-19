@@ -28,12 +28,12 @@ function CurrenciesList() {
   // prettier-ignore
   useEffect(() => {
     if (searchQuery && currenciesData.length) {
-      const filteredData = filteredCurrencies.filter((currency) => currency.currencySymbol
+      const filteredData = currenciesData.filter((currency) => currency.currencySymbol
         .toLowerCase()
         .includes(searchQuery.toLowerCase()));
       setFilteredCurrencies(filteredData);
     }
-  }, [currenciesData.length, filteredCurrencies, searchQuery]);
+  }, [currenciesData, searchQuery]);
 
   if (isLoadingData) {
     return <div>Currencies loading...</div>;
