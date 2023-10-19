@@ -2,13 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const headerSlice = createSlice({
   name: 'header',
-  initialState: { isOpen: false },
+  initialState: { isSearchBarOpen: false, searchQuery: null },
   reducers: {
-    openSearchBar: (store) => {
-      store.isOpen = !store.isOpen;
+    toggleSearchBar: (store) => {
+      store.isSearchBarOpen = !store.isSearchBarOpen;
+    },
+    updateSearchQuery: (store, action) => {
+      store.searchQuery = action.payload;
     },
   },
 });
 
-export const { openSearchBar } = headerSlice.actions;
+export const { toggleSearchBar, updateSearchQuery } = headerSlice.actions;
 export default headerSlice.reducer;

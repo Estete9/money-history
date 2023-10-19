@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { React, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import SectionHeader from './SectionHeader';
@@ -10,11 +10,30 @@ import { fetchSymbolsAPI } from '../redux/currencies/currenciesSlice';
 function CurrenciesList() {
   const dispatch = useDispatch();
   const { currenciesData, isLoadingData, error } = useSelector((store) => store.currencies);
+  const { searchQuery } = useSelector((store) => store.header);
+  const [filteredCurrencies, setFilteredCurrencies] = useState(currenciesData);
+
   useEffect(() => {
     if (isLoadingData && !currenciesData.length) {
       dispatch(fetchSymbolsAPI());
     }
-  }, [currenciesData.length, dispatch, isLoadingData]);
+  }, [currenciesData, dispatch, isLoadingData]);
+
+  useEffect(() => {
+    if (currenciesData.length) {
+      setFilteredCurrencies(currenciesData);
+    }
+  }, [currenciesData]);
+
+  // prettier-ignore
+  useEffect(() => {
+    if (searchQuery && currenciesData.length) {
+      const filteredData = filteredCurrencies.filter((currency) => currency.currencySymbol
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase()));
+      setFilteredCurrencies(filteredData);
+    }
+  }, [currenciesData.length, filteredCurrencies, searchQuery]);
 
   if (isLoadingData) {
     return <div>Currencies loading...</div>;
@@ -40,7 +59,7 @@ function CurrenciesList() {
       {/* update this HEADER INFORMATION */}
       <SectionHeader countryName="Euro" value="$1.594" />
       <div className={styles.currenciesGrid}>
-        {currenciesData.map((currency) => (
+        {filteredCurrencies.map((currency) => (
           <Link key={uuidv4()} to={`/currency/${currency.currencySymbol}`}>
             <CurrencyElement currency={currency} />
           </Link>

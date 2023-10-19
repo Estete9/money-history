@@ -4,16 +4,16 @@ import styles from '../styles/header.module.css';
 import searchIcon from '../assets/searchIcon.svg';
 import backChevron from '../assets/back-chevron.svg';
 import SearchBar from './SearchBar';
-import { openSearchBar } from '../redux/header/headerSlice';
+import { toggleSearchBar } from '../redux/header/headerSlice';
 
 function Header() {
   const location = useLocation();
   const atHome = location.pathname === '/';
-  const { isOpen } = useSelector((store) => store.header);
+  const { isSearchBarOpen } = useSelector((store) => store.header);
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(openSearchBar());
+    dispatch(toggleSearchBar());
   };
 
   return (
@@ -30,7 +30,7 @@ function Header() {
           <img className={styles.searchIconImg} src={searchIcon} alt="search icon" />
         </button>
       )}
-      {isOpen && <SearchBar className={styles.searchBar} />}
+      {isSearchBarOpen && <SearchBar className={styles.searchBar} />}
     </header>
   );
 }

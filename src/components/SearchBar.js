@@ -1,25 +1,35 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { openSearchBar } from '../redux/header/headerSlice';
+import { toggleSearchBar, updateSearchQuery } from '../redux/header/headerSlice';
 import closeBtn from '../assets/close.svg';
 import styles from '../styles/searchBar.module.css';
 
 function SearchBar() {
-  const { isOpen } = useSelector((store) => store.header);
+  const { isSearchBarOpen, searchQuery } = useSelector((store) => store.header);
   const dispatch = useDispatch();
 
-  const handleClick = () => {
-    dispatch(openSearchBar());
+  const handleCloseBtn = () => {
+    dispatch(toggleSearchBar());
   };
 
+  const handleSearchQuery = (event) => {
+    dispatch(updateSearchQuery(event.target.value));
+  };
+
+  // useEffect((queryValue) => {
+  //   dispatch(updateSearchQuery(queryValue));
+  // });
+
   return (
-    isOpen && (
-      <div className={`${styles.searchBarWrapper} ${isOpen ? styles.show : ''}`}>
+    isSearchBarOpen && (
+      <div className={`${styles.searchBarWrapper} ${isSearchBarOpen ? styles.show : ''}`}>
         <input
           className={styles.searchBar}
           placeholder="Select one of the 8 available currencies"
-          type="text"
+          type="search"
+          value={searchQuery}
+          onChange={(e) => handleSearchQuery(e)}
         />
-        <button type="button" className={styles.closeBtn} onClick={handleClick}>
+        <button type="button" className={styles.closeBtn} onClick={handleCloseBtn}>
           <img className={styles.closeBtnImg} src={closeBtn} alt="closeBtn icon" />
         </button>
       </div>
