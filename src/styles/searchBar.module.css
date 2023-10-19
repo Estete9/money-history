@@ -1,0 +1,30 @@
+.searchBarWrapper {
+  /* display: none; */
+  width: 100%;
+  position: absolute;
+  height: 30px;
+}
+
+.searchBar {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.closeBtnImg {
+  height: 20px;
+}
+
+.closeBtn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.show {
+  display: block;
+}

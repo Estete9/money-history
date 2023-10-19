@@ -12,14 +12,18 @@
   transform: translateY(-50%);
 }
 
-.searchIcon {
+.searchBtn {
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.searchIcon,
+.searchIconImg,
 .backBtn {
   height: 20px;
+}
+
+.show {
+  display: flex;
 }

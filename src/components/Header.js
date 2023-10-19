@@ -1,12 +1,20 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from '../styles/header.module.css';
 import searchIcon from '../assets/searchIcon.svg';
 import backChevron from '../assets/back-chevron.svg';
+import SearchBar from './SearchBar';
+import { openSearchBar } from '../redux/header/headerSlice';
 
 function Header() {
   const location = useLocation();
   const atHome = location.pathname === '/';
+  const { isOpen } = useSelector((store) => store.header);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(openSearchBar());
+  };
 
   return (
     <header className={styles.header}>
@@ -17,7 +25,12 @@ function Header() {
         </NavLink>
       )}
       <h3 className={styles.headerTitle}>Top 8 Currencies</h3>
-      {atHome && <img className={styles.searchIcon} src={searchIcon} alt="search icon" />}
+      {atHome && (
+        <button type="button" className={styles.searchBtn} onClick={handleClick}>
+          <img className={styles.searchIconImg} src={searchIcon} alt="search icon" />
+        </button>
+      )}
+      {isOpen && <SearchBar className={styles.searchBar} />}
     </header>
   );
 }
