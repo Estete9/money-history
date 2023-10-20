@@ -26,7 +26,7 @@ function Header() {
       {!atHome && (
         <NavLink className={styles.backSection} to="/" onClick={handleBackClick}>
           <img className={styles.backBtn} src={backChevron} alt="back button" />
-          <h3>{new Date().getFullYear()}</h3>
+          <h3 className={styles.backBtnText}>BACK</h3>
         </NavLink>
       )}
       <h3 className={styles.headerTitle}>Top 8 Currencies</h3>
