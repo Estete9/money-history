@@ -19,15 +19,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 2px;
   padding: 5px;
   position: absolute;
-  right: 0;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
   border: none;
   border-radius: 30px;
-  background-color: aqua;
+  background-color: transparent;
 }
 
 .searchIconImg,

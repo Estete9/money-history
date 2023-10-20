@@ -1,3 +1,19 @@
 .td {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.currencyElementImg {
+  height: 50px;
+  align-self: center;
+}
+
+.currencyContent p:first-child {
+  font-weight: bold;
+}
+
+.currencyContent p:last-child {
+  font-size: 0.7rem;
 }

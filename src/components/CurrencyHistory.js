@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import SectionHeader from './SectionHeader';
 import { fetchCurrencyHistory } from '../redux/currencies/currenciesSlice';
 import CurrencyHistoryElement from './CurrencyHistoryElement';
+import styles from '../styles/currencyHistory.module.css';
 
 function CurrencyHistory() {
   const { symbol } = useParams();
@@ -30,6 +31,10 @@ function CurrencyHistory() {
     }
   }, [currencyHistory, currenciesData, dispatch, isLoadingHistory, symbol, currentDate]);
 
+  const sectionHeaderValue = currencyHistory.find(
+    (history) => Object.keys(history.rates)[0] === symbol,
+  );
+
   if (isLoadingHistory) {
     return <div>Currency&apos;s History loading...</div>;
   }
@@ -53,18 +58,20 @@ function CurrencyHistory() {
     <div>
       <SectionHeader
         countryName={getCountryName(currenciesData, symbol)}
+        value={sectionHeaderValue.rates[symbol] || ''}
         symbol={symbol}
-        value="1.594"
       />
-      {currencyHistory.map((yearObj, index) => (
-        <CurrencyHistoryElement
-          key={uuidv4()}
-          currency={{
-            currencySymbol: symbol,
-            year: yearObj.date.split('-')[0],
-            value: currencyHistory ? JSON.stringify(currencyHistory[index].rates[`${symbol}`]) : -2,
-          }}
-        />
+      <div className={styles.separator}>PAST 5 YEARS</div>
+      {currencyHistory.map((yearObj) => (
+        <div key={uuidv4()} className={styles.historyElementWrapper}>
+          <CurrencyHistoryElement
+            currency={{
+              currencySymbol: symbol,
+              year: yearObj.date.split('-')[0],
+              value: currencyHistory ? JSON.stringify(yearObj.rates[`${symbol}`]) : -2,
+            }}
+          />
+        </div>
       ))}
     </div>
   );

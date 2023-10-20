@@ -59,11 +59,17 @@ function CurrenciesList() {
 
   return (
     <div>
-      {/* update this HEADER INFORMATION */}
-      <SectionHeader countryName="Euro" value="$1.594" />
+      <SectionHeader countryName="Euro" value={1} symbol="EUR" />
+      <div className={styles.separator}>CURRENCIES</div>
       <div className={styles.currenciesGrid}>
-        {filteredCurrencies.map((currency) => (
-          <Link key={uuidv4()} to={`/currency/${currency.currencySymbol}`}>
+        {filteredCurrencies.map((currency, index) => (
+          <Link
+            className={`${styles.currencyItem} ${
+              index % 4 === 0 || index % 4 === 3 ? styles.color1 : styles.color2
+            }`}
+            key={uuidv4()}
+            to={`/currency/${currency.currencySymbol}`}
+          >
             <CurrencyElement currency={currency} />
           </Link>
         ))}

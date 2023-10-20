@@ -1,5 +1,23 @@
 .currenciesGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
+}
+
+.color1 {
+  background-color: #fd5295;
+}
+
+.color2 {
+  background-color: #d1457a;
+}
+
+.separator {
+  background-color: #df4683;
+  font-size: 0.8rem;
+  padding: 2px 4px;
+}
+
+.currencyItem {
+  text-align: end;
+  text-decoration: none;
 }

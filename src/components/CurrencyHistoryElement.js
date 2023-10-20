@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 
 function CurrencyHistoryElement({ currency }) {
   return (
-    <>
+    <div>
       <div>{currency.year}</div>
       <div>{`${currency.currencySymbol} ${currency.value} = EUR 1`}</div>
-    </>
+    </div>
   );
 }
 
