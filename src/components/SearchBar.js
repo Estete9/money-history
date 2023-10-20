@@ -21,7 +21,7 @@ function SearchBar() {
       <div className={`${styles.searchBarWrapper} ${isSearchBarOpen ? styles.show : ''}`}>
         <input
           className={styles.searchBar}
-          placeholder="Select one of the 8 available currencies"
+          placeholder="Search currency code (E.g. USD)"
           type="search"
           value={searchQuery}
           onChange={(e) => handleSearchQuery(e)}

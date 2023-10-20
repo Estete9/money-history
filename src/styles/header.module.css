@@ -16,6 +16,7 @@
 }
 
 .searchBtn {
+  background-color: #d1457a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +27,6 @@
   transform: translateY(-50%);
   border: none;
   border-radius: 30px;
-  background-color: transparent;
 }
 
 .searchIconImg,

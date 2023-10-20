@@ -10,6 +10,8 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  color: #000;
+  padding-left: 10px;
 }
 
 .closeBtnImg {
@@ -27,7 +29,7 @@
   transform: translateY(-50%);
   border: none;
   border-radius: 30px;
-  background-color: aqua;
+  background-color: #d1457a;
 }
 
 .show {
