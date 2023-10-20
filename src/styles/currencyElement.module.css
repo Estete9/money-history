@@ -10,6 +10,12 @@
   align-self: center;
 }
 
+.enterCurrencyArrow {
+  position: absolute;
+  height: 15px;
+  margin-left: -10px;
+}
+
 .currencyContent p:first-child {
   font-weight: bold;
 }

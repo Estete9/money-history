@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import styles from '../styles/currencyElement.module.css';
+import arrowRightImg from '../assets/arrow-right.svg';
 
 // dynamically import all images
 const svgContext = require.context('../assets/currencies', false, /\.svg$/);
@@ -13,6 +14,13 @@ function CurrencyElement({ currency }) {
   const imageSource = currencyImages[currency.currencySymbol];
   return (
     <div className={styles.td}>
+      <div className={styles.enterArrowWrapper}>
+        <img
+          className={styles.enterCurrencyArrow}
+          src={arrowRightImg}
+          alt="enter currency button"
+        />
+      </div>
       <img className={styles.currencyElementImg} src={imageSource} alt="currencyImg" />
       <div className={styles.currencyContent}>
         <p>{currency.currencyCountry}</p>
