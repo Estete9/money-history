@@ -3,12 +3,13 @@ import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import SectionHeader from './SectionHeader';
-import { fetchCurrencyHistory } from '../redux/currencies/currenciesSlice';
+import { fetchCurrencyHistory, clearCurrencyHistory } from '../redux/currencies/currenciesSlice';
 import CurrencyHistoryElement from './CurrencyHistoryElement';
 import styles from '../styles/currencyHistory.module.css';
 
 function CurrencyHistory() {
   const { symbol } = useParams();
+  const [previousSymbol, setPreviousSymbol] = useState();
   // prettier-ignore
   const {
     currencyHistory,
@@ -24,12 +25,21 @@ function CurrencyHistory() {
     const currency = currenciesData.find((currency) => currency.currencySymbol === symbol);
     return currency ? currency.currencyCountry : 'Country not found';
   };
+  useEffect(
+    () => () => {
+      if (!isLoadingHistory && currencyHistory.length && symbol === previousSymbol) {
+        dispatch(clearCurrencyHistory());
+      }
+    },
+    [currencyHistory.length, dispatch, isLoadingHistory, previousSymbol, symbol],
+  );
 
   useEffect(() => {
-    if (isLoadingHistory && !currencyHistory.length) {
+    if (isLoadingHistory && !currencyHistory.length && symbol !== previousSymbol) {
       dispatch(fetchCurrencyHistory({ symbol, currentDate }));
+      setPreviousSymbol(symbol);
     }
-  }, [currencyHistory, currenciesData, dispatch, isLoadingHistory, symbol, currentDate]);
+  }, [currencyHistory.length, currentDate, dispatch, isLoadingHistory, previousSymbol, symbol]);
 
   const sectionHeaderValue = currencyHistory.find(
     (history) => Object.keys(history.rates)[0] === symbol,
@@ -58,7 +68,7 @@ function CurrencyHistory() {
     <div>
       <SectionHeader
         countryName={getCountryName(currenciesData, symbol)}
-        value={sectionHeaderValue.rates[symbol] || ''}
+        value={sectionHeaderValue ? sectionHeaderValue.rates[symbol] : ''}
         symbol={symbol}
       />
       <div className={styles.separator}>PAST 5 YEARS</div>

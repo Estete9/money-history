@@ -5,6 +5,7 @@ import searchIcon from '../assets/searchIcon.svg';
 import backChevron from '../assets/back-chevron.svg';
 import SearchBar from './SearchBar';
 import { toggleSearchBar } from '../redux/header/headerSlice';
+import { clearCurrencyHistory } from '../redux/currencies/currenciesSlice';
 
 function Header() {
   const location = useLocation();
@@ -16,10 +17,14 @@ function Header() {
     dispatch(toggleSearchBar());
   };
 
+  const handleBackClick = () => {
+    dispatch(clearCurrencyHistory());
+  };
+
   return (
     <header className={styles.header}>
       {!atHome && (
-        <NavLink className={styles.backSection} to="/">
+        <NavLink className={styles.backSection} to="/" onClick={handleBackClick}>
           <img className={styles.backBtn} src={backChevron} alt="back button" />
           <h3>{new Date().getFullYear()}</h3>
         </NavLink>
@@ -36,3 +41,10 @@ function Header() {
 }
 
 export default Header;
+
+/**
+ * import { clearCurrencyHistory } from '../redux/currencies/currenciesSlice';
+  const onClickBackHandle = () => {
+    dispatch(clearCurrencyHistory());
+  };
+ */

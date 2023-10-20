@@ -10,7 +10,6 @@ svgContext.keys().forEach((key) => {
 });
 
 function CurrencyElement({ currency }) {
-  console.log(`this is the symbol for ${currency.currencyCountry}`, currency.currencySymbol);
   const imageSource = currencyImages[currency.currencySymbol];
   return (
     <div className={styles.td}>

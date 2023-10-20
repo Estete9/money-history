@@ -61,7 +61,12 @@ export const fetchCurrencyHistory = createAsyncThunk(
 const currenciesSlice = createSlice({
   name: 'currencies',
   initialState,
-  reducers: {},
+  reducers: {
+    clearCurrencyHistory: (store) => {
+      store.currencyHistory = [];
+      store.isLoadingHistory = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchSymbolsAPI.pending, (store) => {
@@ -96,5 +101,7 @@ const currenciesSlice = createSlice({
       });
   },
 });
+
+export const { clearCurrencyHistory } = currenciesSlice.actions;
 
 export default currenciesSlice.reducer;
