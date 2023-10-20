@@ -12,8 +12,9 @@
 
 .enterCurrencyArrow {
   position: absolute;
-  height: 15px;
-  margin-left: -10px;
+  height: 20px;
+  margin-left: -5px;
+  margin-top: -10px;
 }
 
 .currencyContent p:first-child {

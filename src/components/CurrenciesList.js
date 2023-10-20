@@ -6,12 +6,19 @@ import SectionHeader from './SectionHeader';
 import CurrencyElement from './CurrencyElement';
 import styles from '../styles/currenciesList.module.css';
 import { fetchSymbolsAPI } from '../redux/currencies/currenciesSlice';
+import { toggleSearchBar } from '../redux/header/headerSlice';
 
 function CurrenciesList() {
   const dispatch = useDispatch();
   const { currenciesData, isLoadingData, error } = useSelector((store) => store.currencies);
-  const { searchQuery } = useSelector((store) => store.header);
+  const { searchQuery, isSearchBarOpen } = useSelector((store) => store.header);
   const [filteredCurrencies, setFilteredCurrencies] = useState(currenciesData);
+
+  const handleCloseSearchBar = () => {
+    if (isSearchBarOpen) {
+      dispatch(toggleSearchBar());
+    }
+  };
 
   useEffect(() => {
     if (isLoadingData && !currenciesData.length) {
@@ -69,6 +76,7 @@ function CurrenciesList() {
             }`}
             key={uuidv4()}
             to={`/currency/${currency.currencySymbol}`}
+            onClick={handleCloseSearchBar}
           >
             <CurrencyElement currency={currency} />
           </Link>

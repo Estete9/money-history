@@ -13,6 +13,12 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+  text-decoration: none;
+  align-items: center;
+}
+
+.headerTitle {
+  font-weight: 100;
 }
 
 .searchBtn {
@@ -29,8 +35,16 @@
   border-radius: 30px;
 }
 
-.searchIconImg,
+.backBtnText {
+  font-size: 0.8rem;
+}
+
+
 .backBtn {
+  height: 15px;
+}
+
+.searchIconImg {
   height: 20px;
 }
 
