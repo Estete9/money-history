@@ -1,7 +1,6 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <img src="./src/logo.svg" alt="logo" width="140"  height="auto" />
   <br/>
 
   <h3><b>Money's History - React</b></h3>
