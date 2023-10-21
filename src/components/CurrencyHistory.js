@@ -53,7 +53,7 @@ function CurrencyHistory() {
     return <div>{`We encountered an error: ${JSON.stringify(error)}`}</div>;
   }
 
-  if (!currencyHistory) {
+  if (!currencyHistory.length) {
     return (
       <section>
         <header>

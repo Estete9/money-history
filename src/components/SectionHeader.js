@@ -43,7 +43,7 @@ SectionHeader.propTypes = {
 
 SectionHeader.defaultProp = {
   symbol: 'EUR',
-  countryName: 'EUROPE',
-  value: '-2',
+  value: -2,
+  countryName: 'Euro',
 };
 export default SectionHeader;

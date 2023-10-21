@@ -10,7 +10,7 @@ jest.mock('axios');
 const mockStore = configureStore([]);
 
 describe('Integration tests for CurrenciesList component', () => {
-  test('Checks if CurrencyList renders correctly after async API consumption', async () => {
+  test('Checks if CurrencyList renders correctly after async API consumption', () => {
     const mockData = [
       {
         currencyCountry: 'Australian Dollar',
