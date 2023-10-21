@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checks that CurrencyElement component renders correctly 1`] = `
+<div
+  className="td"
+>
+  <div
+    className="enterArrowWrapper"
+  >
+    <img
+      alt="enter currency button"
+      className="enterCurrencyArrow"
+      src="svg-mock"
+    />
+  </div>
+  <img
+    alt="currencyImg"
+    className="currencyElementImg"
+    src="svg-mock"
+  />
+  <div
+    className="currencyContent"
+  >
+    <p>
+      Australian Dollar
+    </p>
+    <p>
+      AUD
+    </p>
+  </div>
+</div>
+`;
