@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { waitFor } from '@testing-library/react';
 import axios from 'axios';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
@@ -67,5 +66,4 @@ describe('Integration tests for CurrenciesList component', () => {
 
     expect(currenciesListTree).toMatchSnapshot();
   });
-
 });
