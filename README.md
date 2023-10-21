@@ -16,6 +16,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+  - [Preview - Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
@@ -63,6 +64,9 @@
 
 <!-- GETTING STARTED -->
 
+## 🛠 Live Demo <a name="live-demo"></a>
+Check it out [here]( https://estete9.github.io/money-history/)
+
 ## 💻 Getting Started <a name="getting-started"></a>
 
 To get a local copy up and running, follow these steps.
@@ -90,7 +94,7 @@ Make sure eslint-config-airbnb is installed or install with:
 
 ### Usage
 
-#### Live Demo
+#### Live Render
 - Run the script `npm start` to see a live version of the project
 
 
