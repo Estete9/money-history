@@ -1,0 +1,13 @@
+.separator {
+  background-color: #df4683;
+  font-size: 0.8rem;
+  padding: 3px 15px;
+}
+
+.historyElementWrapper {
+  background-color: #eb4b89;
+}
+
+.historyElementWrapper:nth-child(even) {
+  background-color: #d04479;
+}

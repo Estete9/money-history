@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Integration tests for Header component it renders correctly in CurrenciesList component 1`] = `
+<header
+  className="header"
+>
+  <h3
+    className="headerTitle"
+  >
+    Top 8 Currencies
+  </h3>
+  <button
+    className="searchBtn"
+    onClick={[Function]}
+    type="button"
+  >
+    <img
+      alt="search icon"
+      className="searchIconImg"
+      src="svg-mock"
+    />
+  </button>
+</header>
+`;
+
+exports[`Integration tests for Header component it renders correctly in CurrencyHistory component 1`] = `
+<header
+  className="header"
+>
+  <a
+    className="backSection"
+    href="/"
+    onClick={[Function]}
+  >
+    <img
+      alt="back button"
+      className="backBtn"
+      src="svg-mock"
+    />
+    <h3
+      className="backBtnText"
+    >
+      BACK
+    </h3>
+  </a>
+  <h3
+    className="headerTitle"
+  >
+    Top 8 Currencies
+  </h3>
+</header>
+`;

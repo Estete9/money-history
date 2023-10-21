@@ -1,0 +1,37 @@
+.searchBarWrapper {
+  flex: 1;
+  height: 100%;
+}
+
+.searchBar {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000;
+  padding-left: 10px;
+}
+
+.closeBtnImg {
+  height: 20px;
+}
+
+.closeBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  border-radius: 30px;
+  background-color: #d1457a;
+}
+
+.show {
+  display: block;
+}

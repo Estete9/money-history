@@ -1,4 +1,10 @@
 * {
   padding: 0;
   margin: 0;
+  color: #fff;
+}
+
+#root {
+  background-color: #ed4c8b;
+  min-height: 100vh;
 }

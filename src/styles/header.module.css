@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  height: 45px;
+}
+
+.backSection {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: none;
+  align-items: center;
+}
+
+.headerTitle {
+  font-weight: 100;
+}
+
+.searchBtn {
+  background-color: #d1457a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  border-radius: 30px;
+}
+
+.backBtnText {
+  font-size: 0.8rem;
+}
+
+
+.backBtn {
+  height: 15px;
+}
+
+.searchIconImg {
+  height: 20px;
+}
+
+.show {
+  display: flex;
+}
+
+.searchBar {
+  display: flex;
+}

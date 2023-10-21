@@ -1,0 +1,15 @@
+{
+  "singleQuote": true,
+  "jsxSingleQuote": false,
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "semi": true,
+  "jsxBracketSameLine": false,
+  "printWidth": 100,
+  "arrowParens": "always",
+  "object-curly-newline": {
+    "multiline": true,
+    "consistent": true
+  },
+  "implicit-arrow-linebreak": "beside"
+}

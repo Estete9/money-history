@@ -1,0 +1,26 @@
+.td {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.currencyElementImg {
+  height: 50px;
+  align-self: center;
+}
+
+.enterCurrencyArrow {
+  position: absolute;
+  height: 20px;
+  margin-left: -5px;
+  margin-top: -10px;
+}
+
+.currencyContent p:first-child {
+  font-weight: bold;
+}
+
+.currencyContent p:last-child {
+  font-size: 0.7rem;
+}

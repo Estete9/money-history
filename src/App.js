@@ -7,6 +7,7 @@ import {
 import './App.css';
 import CurrenciesList from './components/CurrenciesList';
 import CurrencyHistory from './components/CurrencyHistory';
+import Header from './components/Header';
 
 function Layout() {
   return <Outlet />;
@@ -16,6 +17,7 @@ function App() {
   return (
     <Router>
       <div id="wrapper">
+        <Header />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<CurrenciesList />} />
