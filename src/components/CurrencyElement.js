@@ -2,13 +2,25 @@ import PropTypes from 'prop-types';
 import styles from '../styles/currencyElement.module.css';
 import arrowRightImg from '../assets/arrow-right.svg';
 
-// dynamically import all images
-const svgContext = require.context('../assets/currencies', false, /\.svg$/);
-const currencyImages = {};
-svgContext.keys().forEach((key) => {
-  const symbol = key.replace('./', '').replace('.svg', '');
-  currencyImages[symbol] = svgContext(key);
-});
+import cadSVG from '../assets/currencies/CAD.svg';
+import usdSVG from '../assets/currencies/USD.svg';
+import eurSVG from '../assets/currencies/EUR.svg';
+import jpySVG from '../assets/currencies/JPY.svg';
+import chfSVG from '../assets/currencies/CHF.svg';
+import audSVG from '../assets/currencies/AUD.svg';
+import zarSVG from '../assets/currencies/ZAR.svg';
+import gbpSVG from '../assets/currencies/GBP.svg';
+
+const currencyImages = {
+  CAD: cadSVG,
+  USD: usdSVG,
+  EUR: eurSVG,
+  JPY: jpySVG,
+  CHF: chfSVG,
+  AUD: audSVG,
+  ZAR: zarSVG,
+  GBP: gbpSVG,
+};
 
 function CurrencyElement({ currency }) {
   const imageSource = currencyImages[currency.currencySymbol];
