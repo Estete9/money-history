@@ -27,8 +27,18 @@ export const fetchSymbolsAPI = createAsyncThunk(
   'currencies/symbols',
   async (_, { rejectWithValue }) => {
     try {
-      const currencySymbols = await axios.get(`${baseUrl}symbols?access_key=${apiKey}`);
-      return currencySymbols.data;
+      const response = await fetch(`${baseUrl}symbols?access_key=${apiKey}`, {
+        method: 'GET',
+        mode: 'cors', // Set the CORS mode
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const currencySymbols = await response.json();
+      console.log('currencySymbols', currencySymbols);
+      return currencySymbols;
     } catch (error) {
       return rejectWithValue(error.response);
     }

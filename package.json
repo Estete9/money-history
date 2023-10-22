@@ -1,6 +1,7 @@
 {
   "name": "money-history",
   "version": "0.1.0",
+  "homepage": "https://estete9.github.io/money-history/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
