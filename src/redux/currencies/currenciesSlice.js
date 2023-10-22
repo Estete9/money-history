@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseUrl = 'https://data.fixer.io/api/';
+const baseUrl = 'http://data.fixer.io/api/';
 const apiKey = '87ab7f42d6987a295d7b9f3fb18be28a';
 const topCurrencyArray = ['USD', 'GBP', 'EUR', 'JPY', 'CHF', 'CAD', 'AUD', 'ZAR'];
 
