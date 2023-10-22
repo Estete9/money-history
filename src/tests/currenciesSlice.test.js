@@ -3,5 +3,11 @@ import currenciesReducer, { fetchSymbolsAPI } from '../redux/currencies/currenci
 test('currenciesSlice is loading', () => {
   let store = null;
   store = currenciesReducer(undefined, fetchSymbolsAPI.pending());
-  expect(store.isLoadingRockets).toBe(true);
+  expect(store.isLoadingData).toBe(true);
+});
+
+test('currenciesSlice is loading', () => {
+  let store = null;
+  store = currenciesReducer(undefined, fetchSymbolsAPI.pending());
+  expect(store.isLoadingHistory).toBe(true);
 });
