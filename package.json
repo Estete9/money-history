@@ -1,5 +1,6 @@
 {
   "name": "money-history",
+  "homepage": "https://Estete9.github.io/money-history",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,8 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+   "predeploy": "npm run build",
+   "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -55,6 +56,7 @@
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.2",
+    "gh-pages": "^6.0.0",
     "react-test-renderer": "^18.2.0"
   }
 }
