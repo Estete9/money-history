@@ -5,3 +5,9 @@ test('currenciesSlice is loading', () => {
   store = currenciesReducer(undefined, fetchSymbolsAPI.pending());
   expect(store.isLoadingData).toBe(true);
 });
+
+test('currenciesSlice is loading', () => {
+  let store = null;
+  store = currenciesReducer(undefined, fetchSymbolsAPI.pending());
+  expect(store.isLoadingHistory).toBe(true);
+});
