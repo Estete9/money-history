@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/money-history/static/css/main.1318dc9b.css",
-    "main.js": "/money-history/static/js/main.a3d96c60.js",
+    "main.js": "/money-history/static/js/main.50e782ba.js",
     "static/js/787.2359a71d.chunk.js": "/money-history/static/js/787.2359a71d.chunk.js",
     "static/media/CAD.svg": "/money-history/static/media/CAD.0ec81e63c8704ee4de184c4d815b5c25.svg",
     "static/media/AUD.svg": "/money-history/static/media/AUD.dd283ef16b2d099b39d0ef043428ab71.svg",
@@ -17,11 +17,11 @@
     "static/media/back-chevron.svg": "/money-history/static/media/back-chevron.574c04008ce677f59621136d9a4a3569.svg",
     "static/media/close.svg": "/money-history/static/media/close.6815dcee2b2f8ead75dabbf392214e1b.svg",
     "main.1318dc9b.css.map": "/money-history/static/css/main.1318dc9b.css.map",
-    "main.a3d96c60.js.map": "/money-history/static/js/main.a3d96c60.js.map",
+    "main.50e782ba.js.map": "/money-history/static/js/main.50e782ba.js.map",
     "787.2359a71d.chunk.js.map": "/money-history/static/js/787.2359a71d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1318dc9b.css",
-    "static/js/main.a3d96c60.js"
+    "static/js/main.50e782ba.js"
   ]
 }
