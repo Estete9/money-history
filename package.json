@@ -1,6 +1,5 @@
 {
   "name": "money-history",
-  "homepage": "https://estete9.github.io/money-history/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

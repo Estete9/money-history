@@ -15,7 +15,7 @@ function Layout() {
 
 function App() {
   return (
-    <Router basename="/money-history">
+    <Router>
       <div id="wrapper">
         <Header />
         <Routes>
