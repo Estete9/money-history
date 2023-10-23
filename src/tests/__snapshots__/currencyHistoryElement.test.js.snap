@@ -15,7 +15,7 @@ exports[`should render CurrencyHistoryElement 1`] = `
   <img
     alt="enter currency history button"
     className="historyArrowImg"
-    src="arrow-right.svg"
+    src="svg-mock"
   />
 </div>
 `;

@@ -1,8 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseUrl = 'http://data.fixer.io/api/';
-const apiKey = '87ab7f42d6987a295d7b9f3fb18be28a';
+// https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json
+// https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur.json
+
+const startUrl = 'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@';
+const apiVersion = '1';
+const date = 'latest';
+const baseUrl = `${startUrl}${apiVersion}/${date}`;
 const topCurrencyArray = ['USD', 'GBP', 'EUR', 'JPY', 'CHF', 'CAD', 'AUD', 'ZAR'];
 
 const initialState = {
@@ -13,21 +18,12 @@ const initialState = {
   error: null,
 };
 
-const makeLast5Years = (year) => {
-  let thisYear = year;
-  const last5Years = [];
-  for (let i = 0; i < 5; i += 1) {
-    last5Years.push(thisYear);
-    thisYear -= 1;
-  }
-  return last5Years;
-};
-
 export const fetchSymbolsAPI = createAsyncThunk(
   'currencies/symbols',
   async (_, { rejectWithValue }) => {
     try {
-      const currencySymbols = await axios.get(`${baseUrl}symbols?access_key=${apiKey}`);
+      const currencySymbols = await axios.get(`${baseUrl}/currencies.json`);
+      console.log('currencySymbols.data', currencySymbols.data);
       return currencySymbols.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -37,24 +33,15 @@ export const fetchSymbolsAPI = createAsyncThunk(
 
 export const fetchCurrencyHistory = createAsyncThunk(
   'currencies/currency-history',
-  async ({ symbol, currentDate }, { rejectWithValue }) => {
-    const thisYear = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so we add 1 and pad with '0' if necessary.
-    const day = String(currentDate.getDate()).padStart(2, '0');
-    const past5Years = makeLast5Years(thisYear);
-    // prettier-ignore
-    return Promise.all(
-      past5Years.map(async (year) => {
-        try {
-          const currencyTimeline = await axios.get(
-            `${baseUrl}${year}-${month}-${day}?access_key=${apiKey}&&symbols=${symbol}`,
-          );
-          return currencyTimeline.data;
-        } catch (error) {
-          return rejectWithValue(error.response);
-        }
-      }),
-    );
+  // prettier-ignore
+  async ({ symbol }, { rejectWithValue }) => {
+    try {
+      const currencyTimeline = await axios.get(`${baseUrl}/currencies/${symbol}.json`);
+      console.log('currencyTimeline', currencyTimeline);
+      return currencyTimeline;
+    } catch (error) {
+      return rejectWithValue(error.response);
+    }
   },
 );
 
