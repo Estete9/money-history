@@ -8,7 +8,7 @@ const startUrl = 'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@';
 const apiVersion = '1';
 const date = 'latest';
 const baseUrl = `${startUrl}${apiVersion}/${date}`;
-const topCurrencyArray = ['USD', 'GBP', 'EUR', 'JPY', 'CHF', 'CAD', 'AUD', 'ZAR'];
+const topCurrencyArray = ['usd', 'gbp', 'eur', 'jpy', 'chf', 'cad', 'aud', 'zar'];
 
 const initialState = {
   currenciesData: [],
@@ -23,7 +23,7 @@ export const fetchSymbolsAPI = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const currencySymbols = await axios.get(`${baseUrl}/currencies.json`);
-      console.log('currencySymbols.data', currencySymbols.data);
+      // console.log('currencySymbols.data', currencySymbols.data);
       return currencySymbols.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -37,7 +37,7 @@ export const fetchCurrencyHistory = createAsyncThunk(
   async ({ symbol }, { rejectWithValue }) => {
     try {
       const currencyTimeline = await axios.get(`${baseUrl}/currencies/${symbol}.json`);
-      console.log('currencyTimeline', currencyTimeline);
+      // console.log('currencyTimeline', currencyTimeline);
       return currencyTimeline;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -60,14 +60,20 @@ const currenciesSlice = createSlice({
         store.isLoadingData = true;
       })
       .addCase(fetchSymbolsAPI.fulfilled, (store, action) => {
-        const currenciesArray = Object.keys(action.payload.symbols).map((key) => ({
+        const currenciesArray = Object.keys(action.payload).map((key) => ({
           currencySymbol: key,
-          currencyCountry: action.payload.symbols[key],
+          currencyCountry: action.payload[key],
         }));
+        console.log('currenciesArray', currenciesArray);
         // prettier-ignore
-        const top8Currencies = currenciesArray.filter((currency) => (
-          topCurrencyArray.includes(currency.currencySymbol)
-        ));
+        const top8Currencies = currenciesArray.filter((currency) => {
+          console.log(
+            'topCurrencyArray.includes(currency.currencySymbol)',
+            topCurrencyArray.includes(currency.currencySymbol),
+          );
+          return topCurrencyArray.includes(currency.currencySymbol);
+        });
+        console.log('top8Currencies', top8Currencies);
         store.currenciesData = top8Currencies;
         store.isLoadingData = false;
       })

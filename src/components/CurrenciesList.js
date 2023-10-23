@@ -10,9 +10,15 @@ import { toggleSearchBar } from '../redux/header/headerSlice';
 
 function CurrenciesList() {
   const dispatch = useDispatch();
-  const { currenciesData, isLoadingData, error } = useSelector((store) => store.currencies);
+  const { currenciesData, isLoadingData, error } = useSelector((store) => {
+    console.log('store', JSON.stringify(store));
+    console.log('store.currencies', JSON.stringify(store.currencies));
+    return store.currencies;
+  });
   const { searchQuery, isSearchBarOpen } = useSelector((store) => store.header);
   const [filteredCurrencies, setFilteredCurrencies] = useState(currenciesData);
+
+  console.log('currenciesData', currenciesData.length ? currenciesData : 'still empty');
 
   const handleCloseSearchBar = () => {
     if (isSearchBarOpen) {
@@ -23,6 +29,7 @@ function CurrenciesList() {
   useEffect(() => {
     if (isLoadingData && !currenciesData.length) {
       dispatch(fetchSymbolsAPI());
+      console.log('currenciesData', currenciesData);
     }
   }, [currenciesData, dispatch, isLoadingData]);
 
