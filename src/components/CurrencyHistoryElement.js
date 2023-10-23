@@ -6,7 +6,7 @@ function CurrencyHistoryElement({ currency }) {
   return (
     <div className={styles.currencyHistoryElementWrapper}>
       <div>{currency.year}</div>
-      <p className={styles.currencyConversion}>{`${currency.currencySymbol} ${currency.value} = EUR 1`}</p>
+      <p className={styles.currencyConversion}>{`${currency.currencySymbol} ${currency.value} = eur 1`}</p>
       <img className={styles.historyArrowImg} src={arrowRightImg} alt="enter currency history button" />
     </div>
   );

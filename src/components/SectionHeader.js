@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import styles from '../styles/sectionHeader.module.css';
-import euroSVG from '../assets/currencies/EUR.svg';
+import euroSVG from '../assets/currencies/eur.svg';
 
 function SectionHeader({ countryName, value, symbol }) {
   const symbols = {
-    EUR: '€',
-    USD: '$',
-    ZAR: 'R',
-    AUD: 'A$',
-    CAD: 'C$',
-    JPY: '¥',
-    GBP: '£',
-    CHF: 'CHF',
+    eur: '€',
+    usd: '$',
+    zar: 'R',
+    aud: 'A$',
+    cad: 'C$',
+    jpy: '¥',
+    bgp: '£',
+    chf: 'CHF',
   };
 
   const getSymbol = () => {
@@ -19,7 +19,7 @@ function SectionHeader({ countryName, value, symbol }) {
     return symbols[currency];
   };
 
-  const isEuro = symbol === 'EUR';
+  const isEuro = symbol === 'eur';
 
   return (
     <section className={styles.sectionHeader}>
@@ -42,7 +42,7 @@ SectionHeader.propTypes = {
 };
 
 SectionHeader.defaultProp = {
-  symbol: 'EUR',
+  symbol: 'eur',
   value: -2,
   countryName: 'Euro',
 };

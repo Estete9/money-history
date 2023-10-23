@@ -73,7 +73,7 @@ function CurrenciesList() {
 
   return (
     <div>
-      <SectionHeader countryName="Euro" value={1} symbol="EUR" />
+      <SectionHeader countryName="Euro" value={1} symbol="eur" />
       <div className={styles.separator}>CURRENCIES</div>
       <div className={styles.currenciesGrid}>
         {filteredCurrencies.map((currency, index) => (

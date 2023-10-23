@@ -2,24 +2,24 @@ import PropTypes from 'prop-types';
 import styles from '../styles/currencyElement.module.css';
 import arrowRightImg from '../assets/arrow-right.svg';
 
-import cadSVG from '../assets/currencies/CAD.svg';
-import usdSVG from '../assets/currencies/USD.svg';
-import eurSVG from '../assets/currencies/EUR.svg';
-import jpySVG from '../assets/currencies/JPY.svg';
-import chfSVG from '../assets/currencies/CHF.svg';
-import audSVG from '../assets/currencies/AUD.svg';
-import zarSVG from '../assets/currencies/ZAR.svg';
-import gbpSVG from '../assets/currencies/GBP.svg';
+import cadSVG from '../assets/currencies/cad.svg';
+import usdSVG from '../assets/currencies/usd.svg';
+import eurSVG from '../assets/currencies/eur.svg';
+import jpySVG from '../assets/currencies/jpy.svg';
+import chfSVG from '../assets/currencies/chf.svg';
+import audSVG from '../assets/currencies/aud.svg';
+import zarSVG from '../assets/currencies/zar.svg';
+import gbpSVG from '../assets/currencies/gbp.svg';
 
 const currencyImages = {
-  CAD: cadSVG,
-  USD: usdSVG,
-  EUR: eurSVG,
-  JPY: jpySVG,
-  CHF: chfSVG,
-  AUD: audSVG,
-  ZAR: zarSVG,
-  GBP: gbpSVG,
+  cad: cadSVG,
+  usd: usdSVG,
+  eur: eurSVG,
+  jpy: jpySVG,
+  chf: chfSVG,
+  aud: audSVG,
+  zar: zarSVG,
+  gbp: gbpSVG,
 };
 
 function CurrencyElement({ currency }) {
