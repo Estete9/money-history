@@ -12,9 +12,9 @@ const topCurrencyArray = ['usd', 'gbp', 'eur', 'jpy', 'chf', 'cad', 'aud', 'zar'
 
 const initialState = {
   currenciesData: [],
-  currencyHistory: [],
+  currencyConversion: [],
   isLoadingData: true,
-  isLoadingHistory: true,
+  isLoadingConversion: true,
   error: null,
 };
 
@@ -23,7 +23,6 @@ export const fetchSymbolsAPI = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const currencySymbols = await axios.get(`${baseUrl}/currencies.json`);
-      // console.log('currencySymbols.data', currencySymbols.data);
       return currencySymbols.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -31,14 +30,13 @@ export const fetchSymbolsAPI = createAsyncThunk(
   },
 );
 
-export const fetchCurrencyHistory = createAsyncThunk(
-  'currencies/currency-history',
+export const fetchCurrencyConversion = createAsyncThunk(
+  'currencies/currency-conversion',
   // prettier-ignore
   async ({ symbol }, { rejectWithValue }) => {
     try {
-      const currencyTimeline = await axios.get(`${baseUrl}/currencies/${symbol}.json`);
-      // console.log('currencyTimeline', currencyTimeline);
-      return currencyTimeline;
+      const currencyConversion = await axios.get(`${baseUrl}/currencies/${symbol}.json`);
+      return currencyConversion.data[symbol];
     } catch (error) {
       return rejectWithValue(error.response);
     }
@@ -49,9 +47,9 @@ const currenciesSlice = createSlice({
   name: 'currencies',
   initialState,
   reducers: {
-    clearCurrencyHistory: (store) => {
-      store.currencyHistory = [];
-      store.isLoadingHistory = true;
+    clearCurrencyConversion: (store) => {
+      store.currencyConversion = [];
+      store.isLoadingConversion = true;
     },
   },
   extraReducers: (builder) => {
@@ -64,16 +62,9 @@ const currenciesSlice = createSlice({
           currencySymbol: key,
           currencyCountry: action.payload[key],
         }));
-        console.log('currenciesArray', currenciesArray);
         // prettier-ignore
-        const top8Currencies = currenciesArray.filter((currency) => {
-          console.log(
-            'topCurrencyArray.includes(currency.currencySymbol)',
-            topCurrencyArray.includes(currency.currencySymbol),
-          );
-          return topCurrencyArray.includes(currency.currencySymbol);
-        });
-        console.log('top8Currencies', top8Currencies);
+        const top8Currencies = currenciesArray.filter((currency) => topCurrencyArray
+          .includes(currency.currencySymbol));
         store.currenciesData = top8Currencies;
         store.isLoadingData = false;
       })
@@ -81,20 +72,24 @@ const currenciesSlice = createSlice({
         store.error = action.error;
         store.isLoadingData = false;
       })
-      .addCase(fetchCurrencyHistory.pending, (store) => {
-        store.isLoadingHistory = true;
+      .addCase(fetchCurrencyConversion.pending, (store) => {
+        store.isLoadingConversion = true;
       })
-      .addCase(fetchCurrencyHistory.fulfilled, (store, action) => {
-        store.currencyHistory = action.payload;
-        store.isLoadingHistory = false;
+      .addCase(fetchCurrencyConversion.fulfilled, (store, action) => {
+        const currenciesArray = Object.keys(action.payload).map((key) => ({
+          currencySymbol: key,
+          currencyConversionValue: action.payload[key],
+        }));
+        store.currencyConversion = currenciesArray;
+        store.isLoadingConversion = false;
       })
-      .addCase(fetchCurrencyHistory.rejected, (store, action) => {
+      .addCase(fetchCurrencyConversion.rejected, (store, action) => {
         store.error = action.error;
-        store.isLoadingHistory = false;
+        store.isLoadingConversion = false;
       });
   },
 });
 
-export const { clearCurrencyHistory } = currenciesSlice.actions;
+export const { clearCurrencyConversion } = currenciesSlice.actions;
 
 export default currenciesSlice.reducer;

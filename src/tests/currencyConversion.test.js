@@ -5,12 +5,12 @@ import { waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import { Provider } from 'react-redux';
-import CurrencyHistory from '../components/CurrencyHistory';
+import CurrencyConversion from '../components/CurrencyConversion';
 
 jest.mock('axios');
 const mockConfigStore = configureStore([]);
 
-describe('Integration tests for CurrenciesHistory component', () => {
+describe('Integration tests for CurrencyConversion component', () => {
   test('Checks if CurrencyList renders correctly after async API consumption', async () => {
     const mockCurrenciesData = [
       {
@@ -46,7 +46,7 @@ describe('Integration tests for CurrenciesHistory component', () => {
         currencyCountry: 'South African Rand',
       },
     ];
-    const mockHistoryData = [
+    const mockConversionData = [
       {
         success: true,
         timestamp: 1697910064,
@@ -69,48 +69,48 @@ describe('Integration tests for CurrenciesHistory component', () => {
       },
     ];
 
-    axios.get.mockResolvedValue({ data: mockHistoryData });
+    axios.get.mockResolvedValue({ data: mockConversionData });
 
     const initialState = {
       currencies: {
-        currencyHistory: mockHistoryData,
+        currencyConversion: mockConversionData,
         currenciesData: mockCurrenciesData,
-        isLoadingHistory: false,
+        isLoadingConversion: false,
       },
     };
 
-    const historyStore = mockConfigStore(initialState);
+    const conversionStore = mockConfigStore(initialState);
 
     let component;
     await renderer.act(async () => {
       component = renderer.create(
-        <Provider store={historyStore}>
+        <Provider store={conversionStore}>
           <MemoryRouter initialEntries={['/currency/AUD']}>
             <Routes>
-              <Route path="/currency/:symbol" element={<CurrencyHistory />} />
+              <Route path="/currency/:symbol" element={<CurrencyConversion />} />
             </Routes>
           </MemoryRouter>
         </Provider>,
       );
     });
-    const currencyHistoryTree = component.toJSON();
-    await waitFor(() => expect(currencyHistoryTree).toMatchSnapshot());
+    const currencyConversionTree = component.toJSON();
+    await waitFor(() => expect(currencyConversionTree).toMatchSnapshot());
   });
 
-  test('Checks if loading screen in CurrencyHistory renders correctly', () => {
-    const historyStore = mockConfigStore({
+  test('Checks if loading screen in CurrencyConversion renders correctly', () => {
+    const conversionStore = mockConfigStore({
       currencies: {
-        currencyHistory: [],
-        isLoadingHistory: true,
+        currencyConversion: [],
+        isLoadingConversion: true,
       },
     });
     const component = renderer.create(
-      <Provider store={historyStore}>
-        <CurrencyHistory />
+      <Provider store={conversionStore}>
+        <CurrencyConversion />
       </Provider>,
     );
-    const currencyHistoryTree = component.toJSON();
+    const currencyConversionTree = component.toJSON();
 
-    expect(currencyHistoryTree).toMatchSnapshot();
+    expect(currencyConversionTree).toMatchSnapshot();
   });
 });

@@ -1,11 +1,11 @@
-.currencyHistoryElementWrapper {
+.currencyConversionElementWrapper {
   display: flex;
   height: 70px;
   align-items: center;
   padding: 0 8px;
 }
 
-.historyArrowImg {
+.conversionArrowImg {
   margin-left: 20px;
   height: 20px;
 }

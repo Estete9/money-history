@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CurrencyConversionElement 1`] = `
+<div
+  className="currencyConversionElementWrapper"
+>
+  <div>
+    2023
+  </div>
+  <p
+    className="currencyConversion"
+  >
+    GBP 1.65 = eur 1
+  </p>
+  <img
+    alt="enter currency history button"
+    className="historyArrowImg"
+    src="svg-mock"
+  />
+</div>
+`;

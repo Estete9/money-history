@@ -10,7 +10,7 @@ function SectionHeader({ countryName, value, symbol }) {
     aud: 'A$',
     cad: 'C$',
     jpy: '¥',
-    bgp: '£',
+    gbp: '£',
     chf: 'CHF',
   };
 
@@ -27,7 +27,7 @@ function SectionHeader({ countryName, value, symbol }) {
         <img className={styles.sectionHeaderImg} src={euroSVG} alt="currency icon" />
       </div>
       <div className={styles.sectionHeaderContentWrapper}>
-        <h1>{`${getSymbol()} ${value}`}</h1>
+        <h1>{`${getSymbol()} ${value.toFixed(4)}`}</h1>
         <p>{countryName}</p>
         <p>{isEuro ? '$1.06 dollars' : '€1 euro'}</p>
       </div>

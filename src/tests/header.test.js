@@ -9,7 +9,7 @@ import Header from '../components/Header';
 const mockStore = configureStore([]);
 
 describe('Integration tests for Header component', () => {
-  test('it renders correctly in CurrencyHistory component', () => {
+  test('it renders correctly in CurrencyConversion component', () => {
     const store = mockStore({
       header: {
         isSearchBarOpen: false,

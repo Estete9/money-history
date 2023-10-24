@@ -36,7 +36,7 @@ function CurrencyElement({ currency }) {
       <img className={styles.currencyElementImg} src={imageSource} alt="currencyImg" />
       <div className={styles.currencyContent}>
         <p>{currency.currencyCountry}</p>
-        <p>{currency.currencySymbol}</p>
+        <p>{currency.currencySymbol.toUpperCase()}</p>
       </div>
     </div>
   );

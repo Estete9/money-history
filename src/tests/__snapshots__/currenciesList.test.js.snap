@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Integration tests for CurrenciesList component Checks if CurrencyList renders correctly after async API consumption 1`] = `
+<div>
+  <section
+    className="sectionHeader"
+  >
+    <div
+      className="sectionHeaderImgWrapper"
+    >
+      <img
+        alt="currency icon"
+        className="sectionHeaderImg"
+        src="svg-mock"
+      />
+    </div>
+    <div
+      className="sectionHeaderContentWrapper"
+    >
+      <h1>
+        € 1
+      </h1>
+      <p>
+        Euro
+      </p>
+      <p>
+        $1.06 dollars
+      </p>
+    </div>
+  </section>
+  <div
+    className="separator"
+  >
+    CURRENCIES
+  </div>
+  <div
+    className="currenciesGrid"
+  >
+    <a
+      className="currencyItem color1"
+      href="/currency/AUD"
+      onClick={[Function]}
+    >
+      <div
+        className="td"
+      >
+        <div
+          className="enterArrowWrapper"
+        >
+          <img
+            alt="enter currency button"
+            className="enterCurrencyArrow"
+            src="svg-mock"
+          />
+        </div>
+        <img
+          alt="currencyImg"
+          className="currencyElementImg"
+        />
+        <div
+          className="currencyContent"
+        >
+          <p>
+            Australian Dollar
+          </p>
+          <p>
+            AUD
+          </p>
+        </div>
+      </div>
+    </a>
+    <a
+      className="currencyItem color2"
+      href="/currency/CAD"
+      onClick={[Function]}
+    >
+      <div
+        className="td"
+      >
+        <div
+          className="enterArrowWrapper"
+        >
+          <img
+            alt="enter currency button"
+            className="enterCurrencyArrow"
+            src="svg-mock"
+          />
+        </div>
+        <img
+          alt="currencyImg"
+          className="currencyElementImg"
+        />
+        <div
+          className="currencyContent"
+        >
+          <p>
+            Canadian Dollar
+          </p>
+          <p>
+            CAD
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Integration tests for CurrenciesList component Checks if loading screen in CurrencyList renders correctly 1`] = `
+<div>
+  Currencies loading...
+</div>
+`;

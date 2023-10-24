@@ -4,10 +4,10 @@
   padding: 3px 15px;
 }
 
-.historyElementWrapper {
+.conversionElementWrapper {
   background-color: #eb4b89;
 }
 
-.historyElementWrapper:nth-child(even) {
+.conversionElementWrapper:nth-child(even) {
   background-color: #d04479;
 }
