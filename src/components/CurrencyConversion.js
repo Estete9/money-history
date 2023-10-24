@@ -3,10 +3,7 @@ import { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import SectionHeader from './SectionHeader';
-import {
-  fetchCurrencyConversion,
-  // clearCurrencyConversion,
-} from '../redux/currencies/currenciesSlice';
+import { fetchCurrencyConversion } from '../redux/currencies/currenciesSlice';
 import CurrencyConversionElement from './CurrencyConversionElement';
 import styles from '../styles/currencyConversion.module.css';
 
@@ -28,7 +25,6 @@ function CurrencyConversion() {
   const {
     currencyConversion, currenciesData, isLoadingConversion, error,
   } = useSelector((store) => store.currencies);
-  console.log('currenciesData', currenciesData);
   const dispatch = useDispatch();
   const getCountryName = (currenciesData, symbol) => {
     const currency = currenciesData.find((currency) => currency.currencySymbol === symbol);
@@ -40,9 +36,6 @@ function CurrencyConversion() {
   useEffect(() => {
     if (isLoadingConversion && !currencyConversion.length) {
       dispatch(fetchCurrencyConversion({ symbol }));
-    }
-    if (currencyConversion.length) {
-      console.log(currencyConversion);
     }
   }, [currencyConversion, dispatch, isLoadingConversion, symbol]);
 
@@ -66,11 +59,7 @@ function CurrencyConversion() {
   }
   // prettier-ignore
   const conversionToEuro = () => (
-    currencyConversion.find((conversionObj) => {
-      console.log('conversionObj.currencySymbol', conversionObj.currencySymbol);
-      return conversionObj.currencySymbol === 'eur';
-    })
-      .currencyConversionValue
+    currencyConversion.find((conversionObj) => conversionObj.currencySymbol === 'eur').currencyConversionValue
   );
 
   return (

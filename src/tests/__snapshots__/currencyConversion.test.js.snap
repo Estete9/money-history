@@ -18,20 +18,20 @@ exports[`Integration tests for CurrencyConversion component Checks if CurrencyLi
       className="sectionHeaderContentWrapper"
     >
       <h1>
-        undefined 1.679069
+        A$ 0.5966
       </h1>
       <p>
         Australian Dollar
       </p>
       <p>
-        €1 euro
+        $0.9452 euro
       </p>
     </div>
   </section>
   <div
     className="separator"
   >
-    PAST 5 YEARS
+    CONVERSION RATES
   </div>
   <div
     className="conversionElementWrapper"
@@ -40,16 +40,16 @@ exports[`Integration tests for CurrencyConversion component Checks if CurrencyLi
       className="currencyConversionElementWrapper"
     >
       <div>
-        2023
+        EUR
       </div>
       <p
         className="currencyConversion"
       >
-        AUD 1.679069 = eur 1
+        € 0.5966
       </p>
       <img
-        alt="enter currency history button"
-        className="historyArrowImg"
+        alt="enter currency conversion button"
+        className="conversionArrowImg"
         src="svg-mock"
       />
     </div>
@@ -61,16 +61,16 @@ exports[`Integration tests for CurrencyConversion component Checks if CurrencyLi
       className="currencyConversionElementWrapper"
     >
       <div>
-        2020
+        USD
       </div>
       <p
         className="currencyConversion"
       >
-        AUD 1.679069 = eur 1
+        $ 0.6311
       </p>
       <img
-        alt="enter currency history button"
-        className="historyArrowImg"
+        alt="enter currency conversion button"
+        className="conversionArrowImg"
         src="svg-mock"
       />
     </div>
@@ -80,6 +80,6 @@ exports[`Integration tests for CurrencyConversion component Checks if CurrencyLi
 
 exports[`Integration tests for CurrencyConversion component Checks if loading screen in CurrencyConversion renders correctly 1`] = `
 <div>
-  Currency's Conversion loading...
+  Currencies loading...
 </div>
 `;

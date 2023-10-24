@@ -18,13 +18,13 @@ exports[`Integration tests for CurrenciesList component Checks if CurrencyList r
       className="sectionHeaderContentWrapper"
     >
       <h1>
-        € 1
+        $ 1
       </h1>
       <p>
-        Euro
+        United States Dollar
       </p>
       <p>
-        $1.06 dollars
+        $0.9452 euro
       </p>
     </div>
   </section>

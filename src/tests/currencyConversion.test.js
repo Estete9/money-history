@@ -14,58 +14,46 @@ describe('Integration tests for CurrencyConversion component', () => {
   test('Checks if CurrencyList renders correctly after async API consumption', async () => {
     const mockCurrenciesData = [
       {
-        currencySymbol: 'AUD',
+        currencySymbol: 'aud',
         currencyCountry: 'Australian Dollar',
       },
       {
-        currencySymbol: 'CAD',
+        currencySymbol: 'cad',
         currencyCountry: 'Canadian Dollar',
       },
       {
-        currencySymbol: 'CHF',
+        currencySymbol: 'chf',
         currencyCountry: 'Swiss Franc',
       },
       {
-        currencySymbol: 'EUR',
+        currencySymbol: 'eur',
         currencyCountry: 'Euro',
       },
       {
-        currencySymbol: 'GBP',
+        currencySymbol: 'gbp',
         currencyCountry: 'British Pound Sterling',
       },
       {
-        currencySymbol: 'JPY',
+        currencySymbol: 'jpy',
         currencyCountry: 'Japanese Yen',
       },
       {
-        currencySymbol: 'USD',
+        currencySymbol: 'usd',
         currencyCountry: 'United States Dollar',
       },
       {
-        currencySymbol: 'ZAR',
+        currencySymbol: 'zar',
         currencyCountry: 'South African Rand',
       },
     ];
     const mockConversionData = [
       {
-        success: true,
-        timestamp: 1697910064,
-        historical: true,
-        base: 'EUR',
-        date: '2023-10-21',
-        rates: {
-          AUD: 1.679069,
-        },
+        currencySymbol: 'eur',
+        currencyConversionValue: 0.59655744,
       },
       {
-        success: true,
-        timestamp: 1697910064,
-        historical: true,
-        base: 'EUR',
-        date: '2020-10-21',
-        rates: {
-          AUD: 1.679069,
-        },
+        currencySymbol: 'usd',
+        currencyConversionValue: 0.63112036,
       },
     ];
 
@@ -85,7 +73,7 @@ describe('Integration tests for CurrencyConversion component', () => {
     await renderer.act(async () => {
       component = renderer.create(
         <Provider store={conversionStore}>
-          <MemoryRouter initialEntries={['/currency/AUD']}>
+          <MemoryRouter initialEntries={['/currency/aud']}>
             <Routes>
               <Route path="/currency/:symbol" element={<CurrencyConversion />} />
             </Routes>
@@ -100,6 +88,7 @@ describe('Integration tests for CurrencyConversion component', () => {
   test('Checks if loading screen in CurrencyConversion renders correctly', () => {
     const conversionStore = mockConfigStore({
       currencies: {
+        currenciesData: [],
         currencyConversion: [],
         isLoadingConversion: true,
       },
