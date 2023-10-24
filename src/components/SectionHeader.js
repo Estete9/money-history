@@ -29,7 +29,7 @@ function SectionHeader({ countryName, value, symbol }) {
       <div className={styles.sectionHeaderContentWrapper}>
         <h1>{`${getSymbol()} ${value !== parseInt(value, 10) ? value.toFixed(4) : value}`}</h1>
         <p>{countryName}</p>
-        <p>{isEuro ? '€1 usd' : '$0.9452 euro' }</p>
+        <p>{isEuro ? '€1.0579 usd' : '$1 euro' }</p>
       </div>
     </section>
   );
