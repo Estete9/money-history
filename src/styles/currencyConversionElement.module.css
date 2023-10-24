@@ -1,0 +1,15 @@
+.currencyConversionElementWrapper {
+  display: flex;
+  height: 70px;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.conversionArrowImg {
+  margin-left: 20px;
+  height: 20px;
+}
+
+.currencyConversion {
+  margin-left: auto;
+}

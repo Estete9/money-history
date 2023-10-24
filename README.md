@@ -1,7 +1,6 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <img src="./src/logo.svg" alt="logo" width="140"  height="auto" />
   <br/>
 
   <h3><b>Money's History - React</b></h3>
@@ -16,6 +15,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+  - [Preview - Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
@@ -63,6 +63,9 @@
 
 <!-- GETTING STARTED -->
 
+## 🛠 Live Demo <a name="live-demo"></a>
+Check it out [here]( https://estete9.github.io/money-history/)
+
 ## 💻 Getting Started <a name="getting-started"></a>
 
 To get a local copy up and running, follow these steps.
@@ -90,7 +93,7 @@ Make sure eslint-config-airbnb is installed or install with:
 
 ### Usage
 
-#### Live Demo
+#### Live Render
 - Run the script `npm start` to see a live version of the project
 
 
@@ -123,9 +126,6 @@ Make sure eslint-config-airbnb is installed or install with:
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-##### Original design idea by Nelson Sakwa on Behance.
-
-
 <br>
 Contributions, issues, and feature requests are welcome!
 
@@ -148,8 +148,10 @@ If you like this project remember to star and share it 🥳️
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
+ACKNOWLEDGMENTS TO CREATIVE LICENSE AND OTHERS
+- #### Original design idea by Nelson Sakwa on Behance.
+ 
 
-- ACKNOWLEDGMENTS TO CREATIVE LICENSE AND OTHERS
 
 <!-- LICENSE -->
 

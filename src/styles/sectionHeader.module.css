@@ -1,0 +1,33 @@
+.sectionHeader {
+  display: flex;
+  background-color: #fa4f91;
+  padding: 30px 0;
+  gap: 35px;
+}
+
+.sectionHeaderImgWrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex: 1;
+}
+
+.sectionHeaderContentWrapper {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 5px;
+}
+
+.sectionHeaderImg {
+  height: 80px;
+}
+
+.sectionHeader h1:first-child {
+  font-weight: bold;
+}
+
+.sectionHeader p:last-child {
+  font-size: 0.85rem;
+}
