@@ -126,9 +126,6 @@ Make sure eslint-config-airbnb is installed or install with:
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-- #### Original design idea by Nelson Sakwa on Behance.
-
-
 <br>
 Contributions, issues, and feature requests are welcome!
 
@@ -151,8 +148,10 @@ If you like this project remember to star and share it 🥳️
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
+ACKNOWLEDGMENTS TO CREATIVE LICENSE AND OTHERS
+- #### Original design idea by Nelson Sakwa on Behance.
+ 
 
-- ACKNOWLEDGMENTS TO CREATIVE LICENSE AND OTHERS
 
 <!-- LICENSE -->
 
