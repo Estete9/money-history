@@ -5,7 +5,7 @@ import CurrencyElement from '../components/CurrencyElement';
 test('Checks that CurrencyElement component renders correctly', () => {
   const currency = {
     currencyCountry: 'Australian Dollar',
-    currencySymbol: 'AUD',
+    currencySymbol: 'aud',
   };
   const component = renderer.create(<CurrencyElement currency={currency} />);
   const currencyElementTree = component.toJSON();

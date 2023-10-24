@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`section header renders correctly 1`] = `
+<section
+  className="sectionHeader"
+>
+  <div
+    className="sectionHeaderImgWrapper"
+  >
+    <img
+      alt="currency icon"
+      className="sectionHeaderImg"
+      src="svg-mock"
+    />
+  </div>
+  <div
+    className="sectionHeaderContentWrapper"
+  >
+    <h1>
+      $ 1
+    </h1>
+    <p>
+      United States Dollar
+    </p>
+    <p>
+      $0.9452 euro
+    </p>
+  </div>
+</section>
+`;

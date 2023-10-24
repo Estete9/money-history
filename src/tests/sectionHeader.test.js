@@ -5,8 +5,8 @@ import SectionHeader from '../components/SectionHeader';
 test('section header renders correctly', () => {
   const mockValues = {
     countryName: 'United States Dollar',
-    value: '1.0558',
-    symbol: 'USD',
+    value: 1,
+    symbol: 'usd',
   };
   const component = renderer.create(
     <SectionHeader
