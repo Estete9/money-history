@@ -23,7 +23,7 @@ exports[`section header renders correctly 1`] = `
       United States Dollar
     </p>
     <p>
-      $0.9452 euro
+      $1 euro
     </p>
   </div>
 </section>
