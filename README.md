@@ -126,7 +126,7 @@ Make sure eslint-config-airbnb is installed or install with:
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-##### Original design idea by Nelson Sakwa on Behance.
+- #### Original design idea by Nelson Sakwa on Behance.
 
 
 <br>
