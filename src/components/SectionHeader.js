@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import styles from '../styles/sectionHeader.module.css';
-import euroSVG from '../assets/currencies/EUR.svg';
+import euroSVG from '../assets/currencies/eur.svg';
 
 function SectionHeader({ countryName, value, symbol }) {
   const symbols = {
-    EUR: '€',
-    USD: '$',
-    ZAR: 'R',
-    AUD: 'A$',
-    CAD: 'C$',
-    JPY: '¥',
-    GBP: '£',
-    CHF: 'CHF',
+    eur: '€',
+    usd: '$',
+    zar: 'R',
+    aud: 'A$',
+    cad: 'C$',
+    jpy: '¥',
+    gbp: '£',
+    chf: 'CHF',
   };
 
   const getSymbol = () => {
@@ -19,7 +19,7 @@ function SectionHeader({ countryName, value, symbol }) {
     return symbols[currency];
   };
 
-  const isEuro = symbol === 'EUR';
+  const isEuro = symbol === 'eur';
 
   return (
     <section className={styles.sectionHeader}>
@@ -27,9 +27,9 @@ function SectionHeader({ countryName, value, symbol }) {
         <img className={styles.sectionHeaderImg} src={euroSVG} alt="currency icon" />
       </div>
       <div className={styles.sectionHeaderContentWrapper}>
-        <h1>{`${getSymbol()} ${value}`}</h1>
+        <h1>{`${getSymbol()} ${value !== parseInt(value, 10) ? value.toFixed(4) : value}`}</h1>
         <p>{countryName}</p>
-        <p>{isEuro ? '$1.06 dollars' : '€1 euro'}</p>
+        <p>{isEuro ? '€1.0579 usd' : '$1 euro' }</p>
       </div>
     </section>
   );
@@ -42,7 +42,7 @@ SectionHeader.propTypes = {
 };
 
 SectionHeader.defaultProp = {
-  symbol: 'EUR',
+  symbol: 'eur',
   value: -2,
   countryName: 'Euro',
 };
